@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <limits>
 
 void process(std::vector<int>& ring, int skip_pattern) {
     auto it = ring.begin();
@@ -37,13 +38,16 @@ int main(int argc, const char* argv[]) {
 
     int total = 0;
     int max = -1;
+    int min = std::numeric_limits<int>::max() ;
     for (int i = 0; i < people; ++i) {
         int r = results[i];
         if (r > max) max = r;
+        if (r < min) min = r;
         total += r;
         std::cout << "result of " << (i + 1) << ": " << r << std::endl;
     }
 
     std::cout << "max is " << max << std::endl;
+    std::cout << "min is " << min << std::endl;
     std::cout << "total is " << total << std::endl;
 }
